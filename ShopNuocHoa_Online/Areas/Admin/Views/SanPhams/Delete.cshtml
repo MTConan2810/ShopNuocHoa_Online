@@ -1,0 +1,170 @@
+﻿@model ShopNuocHoa_Online.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xoá</h2>
+
+<h3>Bạn chắc chắn xoá @Model.TenSP ?</h3>
+<div>
+    <h4>SanPham</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhMuc.TenDM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhMuc.TenDM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhuyenMai.MaKM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhuyenMai.MaKM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhanHieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanHieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.XuatXu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XuatXu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TgPhatHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TgPhatHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NongDo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NongDo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaPC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaPC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhomHuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhomHuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhongCach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhongCach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MauSac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoSuuTap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoSuuTap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HuongDacTrung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HuongDacTrung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anh)
+        </dt>
+
+        <dd>
+            @{
+                string ImagePath = "~/wwwroot/Images/" + Model.Anh;
+            }
+            <img id="output" class="img-rounded" alt="Ảnh" width="180" height="200" src="@Url.Content(ImagePath)" />
+            @Html.DisplayFor(model => model.Anh)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}

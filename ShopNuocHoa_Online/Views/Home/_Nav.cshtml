@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ShopNuocHoa_Online.Models.DanhMuc>
+
+<nav class="nav navbar-default" id="navigation">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-9">
+                <div class="categories">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="dropdown-toggle link link--yaku" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <div class="title-icon">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <span style="margin:0 3px;"><strong>DANH MỤC</strong></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in Model)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Index","Home",new { id = item.TenDM})" class="link link--yaku"><span>@Html.DisplayFor(model=>item.TenDM)</span></a>
+                                    </li>
+                                }
+                                @*<li>
+                                    <a href="#" class="link link--yaku"><span>Cho nữ</span></a>
+                                    <ul>
+                                        <li>
+                                            <a href="#" class="linh link--yaku"><span>Nước hoa</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="linh link--yaku"><span>Nước hoa</span></a>
+                                        </li>
+                                    </ul>
+                                </li>*@
+                            </ul>
+                        </li>
+                        <li><a href="@Url.Action("SanPhamKM","Home")"><span>| SP KHUYẾN MÃI</span></a></li>
+                        @*<li><a href="@Url.Action("Index","Home")"><span>| SP MỚI</span></a></li>
+                        <li><a href="@Url.Action("Index","Home")"><span>| SP BÁN CHẠY</span></a></li>
+                        <li><a href="@Url.Action("Index","Home")"><span>| SP THANH LÍ</span></a></li>*@
+                        <li><a href="@Url.Action("Blog","Home")"><span>| BLOG</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="hotline">
+                    <div id="hihi">
+                        <a href="#" class="hotline-item">
+                            <div class="hotline-icon">
+                                <span class="icon-phone-1"></span>
+                            </div>
+                            <div class="hotline-number">
+                                <span>Đặt hàng: (8h30 - 21h30)</span>
+                                <span><strong style="font-size:16px; color:black">1800 6047</strong></span>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="hihi" style=" margin-left: 10px;">
+                        <a href="#" class="hotline-item">
+                            <div class="hotline-icon">
+                                <span class="icon-phone-1"></span>
+                            </div>
+                            <div class="hotline-number">
+                                <span>CSKH: T2-T6 (8h30 - 17h)</span>
+                                <span><strong style="font-size:16px; color:black">1800 6077</strong></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

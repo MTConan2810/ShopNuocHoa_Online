@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ShopNuocHoa_Online.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Blog</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Anh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{
+                string ImagePath = "~/wwwroot/Images/" + item.Anh;
+            }
+            <img src="@Url.Content(ImagePath)" height="200" width="300" class="img-thumbnail" />
+            @Html.DisplayFor(modelItem => item.Anh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TieuDe)
+        </td>
+        <td>
+            @Html.ActionLink("Cập nhật", "Edit", new { id=item.MaBlog }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MaBlog }) |
+            @Html.ActionLink("Xoá", "Delete", new { id=item.MaBlog })
+        </td>
+    </tr>
+}
+</table>

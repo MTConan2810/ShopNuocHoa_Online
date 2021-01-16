@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ShopNuocHoa_Online.Models.SanPham>
+
+<div class="col-md-7" id="abc">
+    <div class="header-search">
+        @using (Html.BeginForm("Index","Home"))
+        {
+            <form>
+                <div class="search-text">
+                    @*<input placeholder="Tìm kiếm nước hoa hoặc nhãn hiệu" name="keyword" />*@
+                    @Html.TextBox("SearchString",ViewBag.CurrentFilter as string,new { @class = "input",@placeholder= "Tìm kiếm nước hoa hoặc nhãn hiệu" })
+                    <button class="search-btn" type="submit" />
+                </div>
+                <div class="search-select">
+                    <select>
+                        <option value="" disabled selected>Chọn nhãn hiệu</option>
+                        @foreach (var item in Model)
+                        {
+                            <option value="@Html.DisplayFor(model=>item.NhanHieu)">@Html.DisplayFor(model => item.NhanHieu)</option>
+                        }
+                    </select>
+                </div>
+            </form>
+        }
+    </div>
+</div>

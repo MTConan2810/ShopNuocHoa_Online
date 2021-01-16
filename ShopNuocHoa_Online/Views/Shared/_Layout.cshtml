@@ -1,0 +1,335 @@
+﻿@{
+    ViewBag.Title = "Thế giới nước hoa";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Hệ thống bán hàng toàn quốc</title>
+    <script src="~/Scripts/js-image-slider.js" type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="~/wwwroot/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/PagedList.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!--Title-->
+        <div class="topbar bg-purple">
+            <p style="text-align:center">
+                HỆ THỐNG PHÂN PHỐI NƯỚC HOA & MỸ PHẨM CHÍNH HÃNG HÀNG ĐẦU VIỆT NAM VỚI <strong>50</strong> CỬA HÀNG TRÊN TOÀN QUỐC
+            </p>
+        </div>
+        <!--Title-->
+        <div id="header">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row clearfix">
+                    <!-- LOGO -->
+                    <div class="col-md-3">
+                        <div class="header-logo">
+                            <a href="/" class="logo">
+                                <img src="~/wwwroot/logo/TGNH2020_1.png" alt="" height="120">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /LOGO -->
+                    <!-- SEARCH BAR -->
+                    @{
+                        Html.RenderAction("_Searchbar", "Home");
+                    }
+                    <!-- /SEARCH BAR -->
+                    <!--login-->
+                    <div class="col-md-2" id="abc">
+                        <div class="login">
+                            @if (Session["HoTen"] != null)
+                            {
+                                <a class="fade_open" href="@Url.Action("UserTT","Home",new { id = Session["idUser"] })"><strong>@Session["HoTen"]</strong></a>
+                                <a href="@Url.Action("Logout","Home")">Đăng xuất</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Login","Home")" class="fade_open">Đăng nhập</a>
+                                <a href="@Url.Action("Register","Home")">Đăng kí</a>
+                            }
+                        </div>
+                        <!--Giỏ hàng-->
+                        @*<div class="giohang">
+                                <a href="@Url.Action("Index","Cart")">
+                                    <span class="icon-cart">
+                                        <img src="~/wwwroot/icon/icon_cart.png" style="width:50px" />
+                                    </span>
+                                    <span class="number" name="so-cart">
+                                        0
+                                    </span>
+                                </a>
+                            </div>*@
+                        @{
+                            Html.RenderAction("_CartView", "Home");
+                        }
+                        <!--Giỏ hàng-->
+                    </div>
+                    <!--/login-->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+    </header>
+    <!--HEADER-->
+    <!--Menu-->
+    @{
+        Html.RenderAction("_Nav", "Home");
+    }
+    <!--/Menu-->
+    @RenderBody()
+    <footer class="bg-gray">
+        <div class="container">
+            <ul class="footer-social">
+                <li>
+                    <a href="https://www.google.com/maps/d/viewer?authuser=1&amp;mid=17c0pfBVpAcRZ7pQTcFwTJIP-DRs&amp;ll=15.383810108800732%2C105.74353956730579&amp;z=5" target="_blank"><i class="icon-address"></i> </a>
+                </li>
+                <li><a href="https://www.facebook.com/thegioinuochoa.com.vn" target="_blank"><i class="icon-facebook"></i> </a></li>
+                <li><a href="https://www.youtube.com/user/thegioinuochoa07" target="_blank"><i class="icon-youtube"></i></a></li>
+                <li><a href="tel:18006047" target="_blank"><i class="icon-phone-1"></i></a></li>
+            </ul><!-- end footer-social --><div class="footer-top clearfix">
+                <!-- footer items --><div class="footer-item">
+                    <h3 class="title">Giới thiệu</h3><ul><li><a href="/about-us/" title="Giới thiệu về TGNH">Giới thiệu về TGNH</a></li></ul><ul>
+                        <li>
+                            <a href="/quan-diem-kinh-doanh/" title="Quan điểm kinh doanh">Quan điểm kinh doanh</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/ban-quyen-so-huu/" title="Bản quyền &amp; Sở hữu">Bản quyền &amp; Sở hữu</a>
+                        </li>
+                    </ul>
+                </div><div class="footer-item">
+                    <h3 class="title">Chính Sách Công Ty</h3><ul>
+                        <li>
+                            <a href="/dieu-khoan-su-dung/" title="Điều khoản sử dụng">Điều khoản sử dụng</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/dieu-khoan-su-dung/#chinh-sach-bao-mat" title="Chính sách bảo mật thông tin">Chính sách bảo mật thông tin</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/chinh-sach-cong-ty/#giao-hang" title="Chính sách giao hàng">Chính sách giao hàng</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/chinh-sach-cong-ty/#bao-hanh" title="Chính sách bảo hành">Chính sách bảo hành</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/chinh-sach-cong-ty/#doi-tra" title="Chính sách đổi trả">Chính sách đổi trả</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/nhuong-quyen-thuong-hieu/" title="Nhượng Quyền Thương Hiệu">Nhượng Quyền Thương Hiệu</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3 class="title">Trợ giúp</h3>
+                    <ul>
+                        <li>
+                            <a href="/huong-dan-su-dung-nuoc-hoa/" title="Hướng dẫn sử dụng nước hoa">Hướng dẫn sử dụng nước hoa</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/huong-dan-mua-hang/" title="Hướng dẫn mua hàng">Hướng dẫn mua hàng</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/phuong-thuc-thanh-toan/" title="Phương thức thanh toán">Phương thức thanh toán</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/goi-qua-mien-phi/" title="Gói quà miễn phí">Gói quà miễn phí</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3 class="title">Thông tin khác</h3>
+                    <ul>
+                        <li>
+                            <a href="/hoat-dong-tgnh/" title="Hoạt động TGNH">Hoạt động TGNH</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/member-card/" title="Member Card">Member Card</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/gift-voucher/" title="Gift Voucher">Gift Voucher</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/tuyen-dung/" title="Tuyển dụng">Tuyển dụng</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h3 class="title">Liên Hệ</h3>
+                    <ul>
+                        <li>
+                            <a href="/store/" title="Hệ thống showroom">Hệ thống showroom</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="/contact/" title="Liên hệ">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div> <!-- end footer-item -->
+            </div>
+            <div class="row pro-color">
+                <div class="col-md-4">
+                    <div id="___gcse_0">
+                        <div class="gsc-control-searchbox-only gsc-control-searchbox-only-vi" dir="ltr">
+                            <form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8">
+                                <table cellspacing="0" cellpadding="0" class="gsc-search-box">
+                                    <tbody>
+                                        <tr>
+                                            <td class="gsc-input">
+                                                <div class="gsc-input-box" id="gsc-iw-id1">
+                                                    <table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td id="gs_tti50" class="gsib_a">
+                                                                    <input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="tìm kiếm" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; background: url(&quot;https://www.google.com/cse/static/images/1x/vi/branding.png&quot;) left center no-repeat rgb(255, 255, 255); outline: none;">
+                                                                </td>
+                                                                <td class="gsib_b">
+                                                                    <div class="gsst_b" id="gs_st50" dir="ltr">
+                                                                        <a class="gsst_a" href="javascript:void(0)" style="display: none;" title="Xóa nội dung trong hộp tìm kiếm" role="button">
+                                                                            <span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            <td class="gsc-search-button">
+                                                <button class="gsc-search-button gsc-search-button-v2">
+                                                    <svg width="13" height="13" viewBox="0 0 13 13">
+                                                        <title>tìm kiếm</title>
+                                                        <path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                            <td class="gsc-clear-button">
+                                                <div class="gsc-clear-button" title="xóa các kết quả">
+                                                    &nbsp;
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><!-- end footer-top -->
+            <div class="footer-bottom clearfix">
+                <div class="pull-left">
+                    <div>Copyright © 2008 Công ty Cổ Phần Thương Mại THẾ GIỚI NƯỚC HOA.</div><div>
+                        Giấy chứng nhận ĐKKD số: 0314354419 do Sở Kế Hoạch và Đầu Tư TPHCM cấp lần đầu ngày 17/04/2017.
+                    </div>
+                    <div>Địa chỉ văn phòng: Tầng 9, cao ốc N'ORCH, 170-170BIS-172E Bùi Thị Xuân, Phường Phạm Ngũ Lão, Quận 1, TP.HCM</div>
+                    <div>Điện thoại: 028 7302 0707</div>
+                </div>
+                <div class="pull-right">
+                    <div class="certify">
+                        <a href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=43199" target="_blank">
+                            <img height="50" alt="" src="/img/certify.jpg.pagespeed.ce.N6cxGX5E1K.jpg" onerror="this.onerror=null;pagespeed.lazyLoadImages.loadIfVisibleAndMaybeBeacon(this);">
+                        </a>
+                    </div>
+                </div>
+                <ul class="social">
+                    <li class="facebook">
+                        <a href="https://www.facebook.com/thegioinuochoa.com.vn" target="_blank">
+                            <i class="icon-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="youtube">
+                        <a href="https://www.youtube.com/user/thegioinuochoa07" target="_blank">
+                            <i class="icon-youtube"></i>
+                        </a>
+                    </li>
+                    <li class="address">
+                        <a href="https://www.google.com/maps/d/viewer?authuser=1&amp;mid=17c0pfBVpAcRZ7pQTcFwTJIP-DRs&amp;ll=15.383810108800732%2C105.74353956730579&amp;z=5" target="_blank"><i class="icon-address"></i> </a>
+                    </li>
+                </ul>
+                <div style="margin-top: 5px">
+                    <div class="container">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="https://www.facebook.com/thegioinuochoa.com.vn" class="fa fa-facebook icon icon-border facebook"> </a></li>
+                                <li><a href="https://www.youtube.com/user/thegioinuochoa07" class="fa fa-youtube icon icon-border youtube"> </a></li>
+                                <li><a href="https://www.google.com/maps/d/viewer?authuser=1&amp;mid=17c0pfBVpAcRZ7pQTcFwTJIP-DRs&amp;ll=15.383810108800732%2C105.74353956730579&amp;z=5" class="fa fa-google-plus icon icon-border googleplus"> </a></li>
+                                @*<li><a href="#" class="fa fa-dribbble icon icon-border dribbble"> </a></li>
+                                    <li><a href="#" class="fa fa-rss icon icon-border rss"> </a></li>*@
+                            </ul>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="backtotop show-top">
+                        <div>
+                            <span class="fa-angle-up"></span>
+                        </div>
+                        top
+                    </div>*@
+            </div><!-- end footer-bottom -->
+        </div>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fa fa-level-up">Top</span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+        <!-- /move top -->
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

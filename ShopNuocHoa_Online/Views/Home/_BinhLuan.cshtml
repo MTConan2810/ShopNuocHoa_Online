@@ -1,0 +1,13 @@
+﻿@model PagedList.IPagedList<ShopNuocHoa_Online.Models.BinhLuan>
+@using PagedList.Mvc;
+
+<div>
+    @foreach (var item in Model)
+    {
+        <h3>@Html.DisplayFor(model => item.HoTen)</h3>
+        <p>@Html.DisplayFor(model => item.NoiDung)</p>
+    }
+    <br />
+    Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("_BinhLuan", new { page }))
+</div>

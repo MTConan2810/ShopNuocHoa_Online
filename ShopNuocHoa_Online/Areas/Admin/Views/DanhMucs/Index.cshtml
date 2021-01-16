@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ShopNuocHoa_Online.Models.DanhMuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh Mục</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDM)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MaDM }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MaDM }) |
+            @Html.ActionLink("Xoá", "Delete", new { id=item.MaDM })
+        </td>
+    </tr>
+}
+</table>

@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "PayMent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Đặt hàng</h2>
+    <p>Mời quý khách điền đầy đủ thông tin bên dưới để chúng tôi giao hàng</p>
+    <div class="col-md-6">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <input placeholder="Họ tên" name="hoten" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <input placeholder="Số điện thoại" name="sdt" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <input placeholder="Địa chỉ" name="diachi" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <input placeholder="Email" name="email" class="form-control" type="email" required />
+            </div>
+            <div class="form-group">
+                <input name="hinhthucpay" placeholder="Hình thức thanh toán: tiền mặt or thanh toán qua thẻ" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input placeholder="Ghi chú" name="ghichu" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-default">Gửi đơn hàng</button>
+        }
+    </div>
+</div>

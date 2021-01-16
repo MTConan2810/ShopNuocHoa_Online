@@ -1,0 +1,12 @@
+﻿@model List<ShopNuocHoa_Online.Models.CartItem>
+
+<div class="giohang">
+    <a href="@Url.Action("Index","Cart")">
+        <span class="icon-cart">
+            <img src="~/wwwroot/icon/icon_cart.png" style="width:50px" />
+        </span>
+        <span class="number" name="so-cart">
+            @Model.Count
+        </span>
+    </a>
+</div>

@@ -1,0 +1,175 @@
+﻿@model ShopNuocHoa_Online.Models.SanPham
+
+@{
+    ViewBag.Title = Html.DisplayFor(model=>model.TenSP);
+}
+<section style="margin-top:15px;">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Product main img -->
+            <div class="col-md-3">
+                @{
+                    string ImagePath = "~/wwwroot/Images/" + Model.Anh;
+                }
+                <img src="@Url.Content(ImagePath)" alt="">
+            </div>
+            <!-- Product details -->
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">@Html.DisplayFor(model => model.TenSP)</h2>
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.NhanHieu)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.NhanHieu)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.GioiTinh)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.GioiTinh)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.XuatXu)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.XuatXu)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TgPhatHanh)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.TgPhatHanh)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.NongDo)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.NongDo)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.NhaPC)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.NhaPC)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.NhomHuong)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.NhomHuong)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PhongCach)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.PhongCach)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.MauSac)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.MauSac)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.BoSuuTap)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.BoSuuTap)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HuongDacTrung)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.HuongDacTrung)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div style="margin-left:50px;">
+                        @if (Model.MaKM != null)
+                        {
+                            var gia = Model.Gia - Model.Gia * Model.KhuyenMai.GiaKM / 100;
+                            <p><del>@Html.DisplayFor(modelItem => modelItem.Gia)</del></p>
+                            <h4 class="product-price">@Html.DisplayFor(modelItem => gia) VNĐ</h4>
+                            <p>(@Html.DisplayFor(modelItem => modelItem.KhuyenMai.GiaKM)%)</p>
+                        }
+                        else
+                        {
+                            <h4 class="product-price">@Html.DisplayFor(modelItem => modelItem.Gia) VNĐ</h4>
+                        }
+                        @*<h3 class="product-price">@Html.DisplayFor(model => model.Gia) VND</h3>*@
+                        <span class="product-available">Còn hàng</span>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="add-to-cart">
+                        <div class="qty-label">
+                            Số lượng
+                            <div class="input-number">
+                                <input type="number" value="0">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                        </div>
+                        <a class="add-to-cart-btn" href="@Url.Action("AddItem","Cart",new { quantity = 1, masp = Model.MaSP })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                    </div>
+                    <ul class="product-links">
+                        <li>Thuộc danh mục:</li>
+                        <li><a href="#">@Html.DisplayFor(model => model.DanhMuc.TenDM)</a></li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Chia sẻ:</li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /Product details -->
+            <div class="row">
+                <div class="col-xs-6">
+                    <h2 style="background-color:wheat">Mô tả chi tiết</h2>
+                    <p>@Html.DisplayFor(model=>model.MoTa)</p>
+                </div>
+                <div class="col-xs-6">
+                    <h2 style="background-color:wheat">Bình luận</h2>
+                    @{
+                        Html.RenderAction("_BinhLuan", "Home",new { bl = Model.TenSP});
+                    }
+                </div>
+            </div>
+            <!--Bình luận-->
+
+            <!--/bình luận-->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</section>

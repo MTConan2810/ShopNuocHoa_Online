@@ -1,0 +1,26 @@
+﻿@model ShopNuocHoa_Online.Models.DanhMuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Danh Mục</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDM)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaDM }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

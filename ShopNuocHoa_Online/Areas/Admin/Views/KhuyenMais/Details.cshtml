@@ -1,0 +1,42 @@
+﻿@model ShopNuocHoa_Online.Models.KhuyenMai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>KhuyenMai</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaKM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaKM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayBD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayBD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayKT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayKT)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaKM }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

@@ -1,0 +1,41 @@
+﻿@model ShopNuocHoa_Online.Models.ChiTietDH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Đơn hàng: @Model.DonHang.MaDH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DonHang.DiaChiGH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonHang.DiaChiGH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SanPham.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SanPham.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongBan)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Quay lại", "Index")
+</p>

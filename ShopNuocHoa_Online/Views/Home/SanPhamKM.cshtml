@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ShopNuocHoa_Online.Models.SanPham>
+
+@{
+    ViewBag.Title = "SanPhamKM";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--SlideShow-->
+<section id="show">
+    <div class="container">
+        <div id="sliderFrame">
+            <div id="slider">
+                <img src="~/wwwroot/Slideshow/banner-mua-1-tang-1-NH.jpg" alt="Welcome to Thegioinuochoa.com" />
+                <img src="~/wwwroot/Slideshow/web-sale-up-to-70-NH-new.jpg.pagespeed.ce.6Hgzj-58pp.jpg" alt="" />
+                <img src="~/wwwroot/Slideshow/banner-QT-NH.jpg" alt="" />
+                <img src="~/wwwroot/Slideshow/web-Gift-NH.jpg" alt="#htmlcaption" />
+                <img src="~/wwwroot/Slideshow/web-upto-50-NH.jpg" />
+            </div>
+            <div id="htmlcaption" style="display: none;">
+                <em>HTML</em> caption. Link to <a href="http://www.google.com/">Google</a>.
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</section>
+<!--/SlideShow-->
+<section>
+    <div class="container" style="text-align:center; margin-top:10px;">
+        <h3><button id="title-sp" style="cursor:pointer; background-color:chocolate">Sale (giá ưu đãi)</button></h3>
+    </div>
+    <div class="container">
+        <div class="row clearfix">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-3 col-sm-4 item col-xs-6 post-scroll" style="min-height:550px;">
+                    <div class="product">
+                        <a class="product-img" href="@Url.Action("ChiTietSP","Home", new { id = item.MaSP })">
+                            @{
+                                string ImagePath = "~/wwwroot/Images/" + item.Anh;
+                            }
+                            <img src="@Url.Content(ImagePath)" alt="" width="250" height="250" />
+                        </a>
+                        <div class="product-body">
+                            <h3 class="product-name"><a href="@Url.Action("ChiTietSP","Home", new {id = item.MaSP})">@Html.DisplayFor(modelItem => item.TenSP)</a></h3>
+                            <p class="product-category">@Html.DisplayFor(modelItem => item.NhanHieu)</p>
+                            @if (item.MaKM != null)
+                            {
+                                var gia = item.Gia - item.Gia * item.KhuyenMai.GiaKM / 100;
+                                <p><del>@Html.DisplayFor(modelItem => item.Gia)</del></p>
+                                <h4 class="product-price">@Html.DisplayFor(modelItem => gia) VNĐ</h4>
+                                <p>(@Html.DisplayFor(modelItem => item.KhuyenMai.GiaKM)%)</p>
+                            }
+                            else
+                            {
+                                <h4 class="product-price">@Html.DisplayFor(modelItem => item.Gia) VNĐ</h4>
+                            }
+                        </div>
+                        <div class="add-to-cart">
+                            <a class="add-to-cart-btn" href="@Url.Action("AddItem","Cart",new { quantity = 1, masp = item.MaSP })"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

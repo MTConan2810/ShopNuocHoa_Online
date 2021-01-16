@@ -1,0 +1,109 @@
+﻿@model ShopNuocHoa_Online.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Đăng kí";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section id="row-breadcrumb"style="margin-top:15px;">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb-instro">
+            <li><a href="/"><i class="fa fa-forward" aria-hidden="true"></i>Trang chủ</a></li>
+            <li class="active" style="color:#fff">Register</li>
+        </ol>
+    </div>
+</section>
+<section class="block-terms">
+    <div class="container">
+        <div class="row">
+            <div class="well form-popup form">
+                <div class="text-thanks">
+                    Cảm ơn quý khách đã quan tâm đến thegioinuochoa.com.vn.<br>
+                    Để đăng ký vui lòng cung cấp đủ thông tin dưới đây.
+                </div>
+            </div>
+            <div>
+                <h4 class="titlemain">Đăng ký tài khoản</h4>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="has-error">
+                        <div class="help-block"></div>
+                    </div>
+                    <div class="clearfix">
+                        <div class="col-md-6">
+                            <h4 class="title">Thông tin cá nhân</h4>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control the-nhap" } })
+                                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control the-nhap" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("DiaChi", new SelectList(ViewBag.Cities), "---Chọn Tỉnh----", new { htmlAttributes = new { @class = "form-control the-nhap" } })*@
+                                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control the-nhap" } })
+                                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control the-nhap" } })
+                                    @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="title">Thông tin bảo mật</h4>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TenDangNhap, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control the-nhap" } })
+                                    @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-3" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control the-nhap" } })
+                                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <div style="margin:20px 0;">
+                            Tôi đồng ý với <a target="blank" href="/dieu-khoan-su-dung/">Chính sách &amp; Điều khoản sử dụng</a>
+                        </div>
+                        <input class="readall" type="submit" name="submit" value="Đăng kí" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    @if (ViewBag.error != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert" style="color:red">@ViewBag.error</div>
+    }
+    @if (ViewBag.thongbao != null)
+    {
+        <br />
+        <div class="alert alert-success" role="alert" style="color:red">@ViewBag.thongbao</div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ShopNuocHoa_Online.Models.Blog>
+@{
+    ViewBag.Title = "Blog";
+}
+
+<section id="row-breadcrumb"style="margin-top:15px;">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb-instro">
+            <li><a href="/"><i class="fa fa-forward" aria-hidden="true"></i>Trang chủ</a></li>
+            <li class="active" style="color:#fff">Blog</li>
+        </ol>
+    </div>
+</section>
+<section style="margin-top:60px;">
+    <div class="container">
+        <div class="row">
+            @foreach(var item in Model)
+            {
+            <div class="col-md-12 item col-xs-6 post-scroll">
+                <div class="col-md-5" style="margin-top:20px;">
+                    <a href="@Url.Action("ChiTietBlogs","Home", new { id = item.MaBlog})">
+                        @{
+                            string ImagePath = "~/wwwroot/Images/" + item.Anh;
+                        }
+                        <img src="@Url.Content(ImagePath)" width="400" height="250" />
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <h3>@Html.DisplayFor(model => item.TieuDe)</h3>
+                </div>
+            </div>
+
+            }
+        </div>
+    </div>
+</section>
