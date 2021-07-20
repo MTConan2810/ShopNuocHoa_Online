@@ -45,7 +45,7 @@
                                     @Html.DisplayFor(model => item.sanpham.TenSP)
                                 </td>
                                 <td>@Html.DisplayFor(model => item.sanpham.Gia) VNĐ</td>
-                                <td><input type="number" min="1" max="100" id="@($"quantity-{item.sanpham.MaSP.ToString().Trim()}")" value="@item.quantity" /></td>
+                                <td><input type="text" id="quantity" value="@item.quantity" /></td>
                                 <td>@Html.DisplayFor(model => item.sanpham.KhuyenMai.GiaKM)%</td>
                                 @if (item.sanpham.MaKM != null)
                                 {
@@ -60,8 +60,8 @@
                                     <td>@Html.DisplayFor(model => thanhtien)</td>
                                 }
                                 <td>
-                                    <button class="btn btn-success btnUpdate"
-                                            data-masp="@item.sanpham.MaSP">
+                                    <button class="btn btn-success"
+                                            data-masp="@item.sanpham.MaSP" id="btnUpdate">
                                         Cập nhật
                                     </button>
                                     <a href="@Url.Action("RemoveCart","Cart",new { masp = item.sanpham.MaSP })"
@@ -93,10 +93,10 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $(".btnUpdate").click(function (event) {
+            $("#btnUpdate").click(function (event) {
                 event.preventDefault();
                 var productid = $(this).attr("data-masp");
-                var quantity = $("#quantity-"+productid.trim()).val();
+                var quantity = $("#quantity").val();
                 $.ajax({
                     type: "POST",
                     url: "/Cart/UpdateCart",
